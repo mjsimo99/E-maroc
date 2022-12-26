@@ -1,3 +1,8 @@
+<?php
+$data = new FurnitureController();
+$products = $data->getAllproducts();
+?>
+
 <div class="custom-rounded wave">
   <!-- collapse -->
   <div class="firstone border d-flex justify-content-center align-items-center" style="background-color: antiquewhite;">
@@ -41,7 +46,9 @@
 <div class="container mt-5" id="offer">
   <div class="row">
     <div class="col-md-4 py-3 py-md-0 d-flex align-items-center">
-      <i class="fa fa-truck" style="color:black;"></i>
+      <div>
+        <i class="fa fa-truck" style="color:black;"></i>
+      </div>
       <div class="ml-3">
         <h5>Free Shipping</h5>
         <p>On orders over $100</p>
@@ -49,20 +56,20 @@
     </div>
 
     <div class="col-md-4 py-3 py-md-0 d-flex align-items-center">
-    <i class="fa fa-thumbs-up fa-solid"></i>
-  <div class="ml-3">
-    <h5>Big Choice</h5>
-    <p>Of product</p>
-  </div>
-</div>
+      <i class="fa fa-thumbs-up fa-solid"></i>
+      <div class="ml-3">
+        <h5>Big Choice</h5>
+        <p>Of product</p>
+      </div>
+    </div>
 
-<div class="col-md-4 py-3 py-md-0 d-flex align-items-center">
-  <i class="fa fa-shopping-cart" style="color: black;"></i>
-  <div class="ml-3">
-    <h5>Fast Delivery</h5>
-    <p>World wide</p>
-  </div>
-</div>
+    <div class="col-md-4 py-3 py-md-0 d-flex align-items-center">
+      <i class="fa fa-shopping-cart" style="color: black;"></i>
+      <div class="ml-3">
+        <h5>Fast Delivery</h5>
+        <p>World wide</p>
+      </div>
+    </div>
 
 
   </div>
@@ -88,79 +95,20 @@
 </div>
 <div class="all d-flex justify-content-around mb-4 flex-wrap col-12 col-sm-10 mx-auto mt-3">
 
+  <?php foreach ($products as $product) : ?>
 
-  <div class="card text-center mb-3" style="width: 20rem;">
-    <img src="views/images/laptop.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title text-success">Card Title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-outline-success btn-lg">Learn More</a>
+    <div class="card text-center mb-3" style="width: 20rem;">
+      <!-- <img src="views/images/laptop.jpg" class="card-img-top" alt="Image"> -->
+      <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($product["image"]) . '" />'; ?>
+
+      <div class="card-body">
+        <h5 class="card-title text-success"><?php echo $product['libelle']; ?></h5>
+        <p class="card-text"><?php echo $product['description']; ?></p>
+        <a href="#" class="btn btn-outline-success btn-lg">Learn More</a>
+      </div>
     </div>
-  </div>
-  <div class="card text-center mb-3" style="width: 20rem;">
-    <img src="views/images/laptop.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title text-success">Card Title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-outline-success btn-lg">Learn More</a>
-    </div>
-  </div>
-  <div class="card text-center mb-3" style="width: 20rem;">
-    <img src="views/images/laptop.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title text-success">Card Title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-outline-success btn-lg">Learn More</a>
-    </div>
-  </div>
-  <div class="card text-center mb-3" style="width: 20rem;">
-    <img src="views/images/laptop.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title text-success">Card Title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-outline-success btn-lg">Learn More</a>
-    </div>
-  </div>
-  <div class="card text-center mb-3" style="width: 20rem;">
-    <img src="views/images/laptop.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title text-success">Card Title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-outline-success btn-lg">Learn More</a>
-    </div>
-  </div>
-  <div class="card text-center mb-3" style="width: 20rem;">
-    <img src="views/images/laptop.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title text-success">Card Title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-outline-success btn-lg">Learn More</a>
-    </div>
-  </div>
-  <div class="card text-center mb-3" style="width: 20rem;">
-    <img src="views/images/laptop.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title text-success">Card Title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-outline-success btn-lg">Learn More</a>
-    </div>
-  </div>
-  <div class="card text-center mb-3" style="width: 20rem;">
-    <img src="views/images/laptop.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title text-success">Card Title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-outline-success btn-lg">Learn More</a>
-    </div>
-  </div>
-  <div class="card text-center mb-3" style="width: 20rem;">
-    <img src="views/images/laptop.jpg" class="card-img-top" alt="Image">
-    <div class="card-body">
-      <h5 class="card-title text-success">Card Title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-outline-success btn-lg">Learn More</a>
-    </div>
-  </div>
+  <?php endforeach; ?>
+
 
 
 
@@ -170,5 +118,5 @@
 </div>
 
 <div class="text-center mb-5">
-  <a href="#" class="logireg btn btn-outline rounded-0 bg-dark px-5 text-center">View More</a>
+  <a href="product" class="logireg btn btn-outline rounded-0 bg-dark px-5 text-center">View More</a>
 </div>

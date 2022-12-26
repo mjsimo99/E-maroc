@@ -6,3 +6,7 @@
   priceRange.addEventListener('input', () => {
     priceRangeValue.textContent = `${priceRange.value} $`;
   });
+
+
+
+

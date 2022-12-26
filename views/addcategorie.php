@@ -2,7 +2,7 @@
 	  if(isset($_POST['submit'])){
 
     $data = new FurnitureController();
-    $data->addProduct();  
+    $data->addcatégorie();  
     }  
     if(!isset($_SESSION['logged']) || $_SESSION['logged'] !== true){
       header("location:index.php");
@@ -18,25 +18,8 @@
       <h3 class="signin-text mb-3">Add Product</h3>
       <form method="post" enctype="multipart/form-data" class="mr-1">
         <div class="form-group">
-          <label for="libelle">Libelle*</label>
-          <input type="text" name="libelle" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="code_barre">Code Barre*</label>
-          <input type="number" name="code_barre" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="prix_achat">Prix D’achat*</label>
-          </label>
-          <input type="number" name="prix_achat" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="prix_final">prix final*</label>
-          <input type="number" name="prix_final" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="Prix_offre">Prix offre*</label>
-          <input type="number" name="Prix_offre" class="form-control">
+          <label for="libelle">Nom*</label>
+          <input type="text" name="nom" class="form-control">
         </div>
         <div class="form-group">
           <label for="description">description*</label>
