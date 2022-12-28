@@ -4,6 +4,9 @@
     $data = new FurnitureController();
     $data->addProduct();  
     }  
+    $data = new FurnitureController();
+    $catégories = $data->getAllcatégorie();
+    
     if(!isset($_SESSION['logged']) || $_SESSION['logged'] !== true){
       header("location:index.php");
       }
@@ -42,10 +45,17 @@
           <label for="description">description*</label>
           <input type="text" name="description" class="form-control">
         </div>
-        <!-- <div class="form-group">
-          <label for="catégorie">catégorie*</label>
-          <input type="text" name="catégorie" class="form-control">
-        </div> -->
+        <div class="form-group">
+        <label for="id_catégorie">catégorie*</label>
+        <select class="form-control" id="categorySelect" name="id_categorie">
+                <?php foreach ($catégories as $catégorie) : ?>
+
+                    <option value="<?php echo $catégorie['IdCat'];?>"><?php echo  $catégorie['IdCat']; ?></option>
+
+                <?php endforeach; ?>
+
+                </select>
+        </div>
         <div class="form-group mb-3">
               <label for="image">image*</label>
               <input type="file" name="image" id="image" class="form-control" placeholder="image">

@@ -2,21 +2,31 @@
 
 <?php
 
-class Furniture{
+class Furniture
+{
 
     /**
      * return @void
      */
 
-    static public function getAll(){
+    static public function getAll()
+    {
         $stmt = DB::connect()->prepare("SELECT * FROM produit");
         $stmt->execute();
         return $stmt->fetchAll();
         $stmt->close();
         $stmt = null;
-
     }
-    
+    static public function getAllcaté()
+    {
+        $stmt = DB::connect()->prepare("SELECT * FROM catégorie");
+        $stmt->execute();
+        return $stmt->fetchAll();
+        $stmt->close();
+        $stmt = null;
+    }
+
+
 
 
 
@@ -34,12 +44,12 @@ class Furniture{
         }
     }
 
-    
+
 
     static public function add($data)
     {
-        $stmt = DB::connect()->prepare("INSERT INTO produit(libelle,code_barre,prix_achat,prix_final,Prix_offre,description,image) VALUES (:libelle,:code_barre,:prix_achat,:prix_final,:Prix_offre,:description,:image)");
-        
+        //print_r($data);
+        $stmt = DB::connect()->prepare("INSERT INTO produit(libelle,code_barre,prix_achat,prix_final,Prix_offre,description,image,id_categorie)VALUES (:libelle,:code_barre,:prix_achat,:prix_final,:Prix_offre,:description,:image,:id_categorie)");
         $stmt->bindParam(':libelle', $data['libelle'], PDO::PARAM_STR);
         $stmt->bindParam(':code_barre', $data['code_barre'], PDO::PARAM_STR);
         $stmt->bindParam(':prix_final', $data['prix_final'], PDO::PARAM_STR);
@@ -47,21 +57,15 @@ class Furniture{
         $stmt->bindParam(':Prix_offre', $data['Prix_offre'], PDO::PARAM_STR);
         $stmt->bindParam(':description', $data['description'], PDO::PARAM_STR);
         $stmt->bindParam(':image', $data['image'], PDO::PARAM_STR);
-
-        // $stmt->bindParam(':catégorie', $data['catégorie'], PDO::PARAM_STR);
-        
-
+        $stmt->bindParam(':id_categorie', $data['id_categorie'], PDO::PARAM_INT);
 
         if ($stmt->execute()) {
             return 'ok';
-
-
         } else {
             return 'error';
         }
         $stmt->close();
         $stmt = null;
-        
     }
 
     static public function addcatégorie($data)
@@ -72,29 +76,26 @@ class Furniture{
         $stmt->bindParam(':image', $data['image'], PDO::PARAM_STR);
 
         // $stmt->bindParam(':catégorie', $data['catégorie'], PDO::PARAM_STR);
-        
+
 
 
         if ($stmt->execute()) {
             return 'ok';
-
-
         } else {
             return 'error';
         }
         $stmt->close();
         $stmt = null;
-        
     }
     static public function update($data)
     {
         $stmt = DB::connect()->prepare("UPDATE produit SET name = :name,prix = :prix,image = :image WHERE id = :id");
 
-        $stmt->bindParam(':id',$data['id']);
-		$stmt->bindParam(':name',$data['name']);
-		$stmt->bindParam(':prix',$data['prix']);
-		$stmt->bindParam(':image',$data['image']);
-        
+        $stmt->bindParam(':id', $data['id']);
+        $stmt->bindParam(':name', $data['name']);
+        $stmt->bindParam(':prix', $data['prix']);
+        $stmt->bindParam(':image', $data['image']);
+
         if ($stmt->execute()) {
 
             return 'ok';
@@ -127,5 +128,3 @@ class Furniture{
         }
     }
 }
-                                                        
-                                                    

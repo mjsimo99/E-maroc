@@ -2,6 +2,11 @@
 $data = new FurnitureController();
 $products = $data->getAllproducts();
 ?>
+<?php
+$data = new FurnitureController();
+$catégories = $data->getAllcatégorie();
+?>
+
 <div class="container mt-5">
     <!-- Filter Form -->
     <div class="col-12 col-md-3 mb-3 mx-auto">
@@ -11,11 +16,12 @@ $products = $data->getAllproducts();
             <div class="form-group">
                 <label for="categorySelect">Category</label>
                 <select class="form-control" id="categorySelect">
-                    <option>All</option>
-                    <option>Electronics</option>
-                    <option>Clothing</option>
-                    <option>Home &amp; Kitchen</option>
-                    <option>Beauty</option>
+                <?php foreach ($catégories as $catégorie) : ?>
+
+                    <option><?php echo $catégorie['nom']; ?></option>
+
+                <?php endforeach; ?>
+
                 </select>
             </div>
             <div class="form-group mb-2">
@@ -74,3 +80,25 @@ $products = $data->getAllproducts();
         </ul>
     </nav>
 </div>
+
+
+<script>
+document.getElementById("priceRange").addEventListener("input", function() {
+  document.getElementById("priceRangeValue").innerHTML = this.value;
+
+  // Filter products based on selected price range
+  var minPrice = this.value;
+  var maxPrice = this.value + 50; // Assuming a step of 50
+  var products = document.getElementsByClassName("product");
+
+  for (var i = 0; i < products.length; i++) {
+    var price = products[i].getAttribute("data-price"); // Assuming each product has a "data-price" attribute with its price
+    if (price >= minPrice && price <= maxPrice) {
+      products[i].style.display = "block";
+    } else {
+      products[i].style.display = "none";
+    }
+  }
+});
+</script>
+

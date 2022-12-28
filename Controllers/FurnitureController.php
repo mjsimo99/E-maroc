@@ -7,13 +7,19 @@ class FurnitureController{
 
 		return $furnitures;
 	}
+	public function getAllcatégorie(){
+		$furnitures = Furniture::getAllcaté();
+
+		return $furnitures;
+	}
+
 	public function addProduct()
 	{
 
 
 		if (isset($_POST['submit'])) {
 			// Check if any of the form fields are empty
-			if (empty($_POST['libelle']) || empty($_POST['code_barre']) || empty($_POST['prix_achat']) || empty($_POST['prix_final']) || empty($_POST['Prix_offre']) || empty($_POST['description']) || empty($_FILES['image'])) {
+			if (empty($_POST['libelle']) || empty($_POST['code_barre']) || empty($_POST['prix_achat']) || empty($_POST['prix_final']) || empty($_POST['Prix_offre']) || empty($_POST['description']) || empty($_FILES['image'])  || empty($_POST['code_barre'])) {
 				// Display error message
 				echo "All form fields are required. Please fill out the form and try again.";
 			} else {
@@ -25,7 +31,7 @@ class FurnitureController{
 					'Prix_offre' => $_POST['Prix_offre'],
 					'description' => $_POST['description'],
 					'image' => file_get_contents($_FILES['image']['tmp_name']),
-					// 'catégorie' => $_POST['catégorie'],
+					'id_categorie' => $_POST['id_categorie'],
 
 				);
 				$result = Furniture::add($data);
