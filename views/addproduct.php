@@ -50,7 +50,7 @@
         <select class="form-control" id="categorySelect" name="id_categorie">
                 <?php foreach ($catégories as $catégorie) : ?>
 
-                    <option value="<?php echo $catégorie['IdCat'];?>"><?php echo  $catégorie['IdCat']; ?></option>
+                    <option value="<?php echo $catégorie['IdCat'];?>"><?php echo  $catégorie['nom']; ?></option>
 
                 <?php endforeach; ?>
 
@@ -60,6 +60,7 @@
               <label for="image">image*</label>
               <input type="file" name="image" id="image" class="form-control" placeholder="image">
         </div>
+       
         <!-- <div class="form-group form-check">
           <input type="checkbox" name="checkbox" class="form-check-input" id="checkbox">
           <label class="form-check-label" for="checkbox">Remember Me</label>

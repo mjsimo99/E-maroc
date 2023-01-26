@@ -6,6 +6,18 @@ $products = $data->getAllproducts();
 $data = new FurnitureController();
 $catégories = $data->getAllcatégorie();
 ?>
+<?php
+// if (isset($_POST['id_categorie'])) {
+//     $existcategorie = new FurnitureController();
+//     $categorie = $existcategorie->getOneProcat();
+// }
+?>
+<?php
+    // if(isset($_GET['category'])){
+    //     $selected_category = $_GET['category'];
+    //     // Filter the products by selected category
+    // }
+?>
 
 <div class="container mt-5">
     <!-- Filter Form -->
@@ -15,14 +27,13 @@ $catégories = $data->getAllcatégorie();
         <form>
             <div class="form-group">
                 <label for="categorySelect">Category</label>
-                <select class="form-control" id="categorySelect">
-                <?php foreach ($catégories as $catégorie) : ?>
-
-                    <option><?php echo $catégorie['nom']; ?></option>
-
-                <?php endforeach; ?>
-
+                <select class="form-control" id="categorySelect" name="categorySelect">
+                    <option value="all">Select All</option>
+                    <?php foreach ($catégories as $catégorie) : ?>
+                        <option><?php echo $catégorie['nom']; ?></option>
+                    <?php endforeach; ?>
                 </select>
+
             </div>
             <div class="form-group mb-2">
                 <label for="priceRange">Price Range</label>
@@ -30,39 +41,41 @@ $catégories = $data->getAllcatégorie();
                 <span id="priceRangeValue"></span>
 
             </div>
-            <div class="text-center">
+            <!-- <div class="text-center">
                 <button type="submit" class="btn btn-primary">Filter</button>
-            </div>
+            </div> -->
         </form>
     </div>
 
 
     <!-- Product Grid -->
+
     <div class="row mt-5 mb-5 ">
+        <?php foreach ($products as $product) : ?>
 
-        
-  <?php foreach ($products as $product) : ?>
+            <div class="col-6 col-md-4 mb-3 product" data-category="<?php echo Furniture::namecategorie(["id_categorie" => $product["id_categorie"]])->nom; ?>">
+                <div class="card h-100">
+                    <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($product["image"]) . '" />'; ?>
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success"><?php echo $product['libelle']; ?></h5>
+                        <p class="card-text"><?php echo $product['description']; ?></p>
 
-        <div class="col-6 col-md-4 mb-3">
-            <div class="card h-100">
-            <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($product["image"]) . '" />'; ?>
-                <div class="card-body text-center">
-                    <h5 class="card-title text-success"><?php echo $product['libelle']; ?></h5>
-                    <p class="card-text"><?php echo $product['description']; ?></p>
+                        <p class="card-text priceachat"><?php echo $product['prix_achat']; ?></p>
 
-                    <p class="card-text"><?php echo $product['prix_achat']; ?></p>
+                        <p class="card-text">Categorie: <?php
+                                                        echo Furniture::namecategorie(["id_categorie" => $product["id_categorie"]])->nom;
+                                                        ?></p>
 
-                    <form method="post" class="mr-1" action="oneproduct">
-                    <input type="hidden" name="IdPrd" value="<?php echo $product['IdPrd']; ?>">
-                    <button class="btn btn-outline-success btn-lg">détails</button>
-                    </form>
+                        <form method="post" class="mr-1" action="oneproduct">
+                            <input type="hidden" name="IdPrd" value="<?php echo $product['IdPrd']; ?>">
+                            <button class="btn btn-outline-success btn-lg">détails</button>
+                        </form>
 
+                    </div>
                 </div>
             </div>
-        </div>
         <?php endforeach; ?>
 
-    
     </div>
 
     <!-- Pagination -->
@@ -80,25 +93,23 @@ $catégories = $data->getAllcatégorie();
         </ul>
     </nav>
 </div>
-
-
 <script>
-document.getElementById("priceRange").addEventListener("input", function() {
-  document.getElementById("priceRangeValue").innerHTML = this.value;
 
-  // Filter products based on selected price range
-  var minPrice = this.value;
-  var maxPrice = this.value + 50; // Assuming a step of 50
-  var products = document.getElementsByClassName("product");
 
-  for (var i = 0; i < products.length; i++) {
-    var price = products[i].getAttribute("data-price"); // Assuming each product has a "data-price" attribute with its price
-    if (price >= minPrice && price <= maxPrice) {
-      products[i].style.display = "block";
-    } else {
-      products[i].style.display = "none";
+document.getElementById("categorySelect").addEventListener("change", function() {
+    var selectedCategory = this.value;
+    var products = document.getElementsByClassName("product");
+    for (var i = 0; i < products.length; i++) {
+        var productCategory = products[i].getAttribute("data-category");
+        if (selectedCategory === "all" || productCategory === selectedCategory) {
+            products[i].style.display = "block";
+        } else {
+            products[i].style.display = "none";
+        }
     }
-  }
+    var newUrl = window.location.href.split("?")[0] + "?category=" + selectedCategory;
+    window.history.pushState({}, "", newUrl);
 });
-</script>
 
+
+</script>

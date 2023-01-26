@@ -24,10 +24,23 @@ class Furniture
         return $stmt->fetchAll();
         $stmt->close();
         $stmt = null;
+    }       
+
+
+    static public function namecategorie($data) {
+        $id_categorie = $data['id_categorie'];
+
+        try {
+            $query ="SELECT catégorie.nom FROM catégorie WHERE IdCat = :id_categorie";
+            $statement = DB::connect()->prepare($query);
+            $statement->execute(array(":id_categorie" => $id_categorie));
+            $categorie = $statement->fetch(PDO::FETCH_OBJ);
+            return $categorie;
+        } catch (PDOException $ex) {
+            echo 'erreur' . $ex->getMessage();
+        }
     }
-
-
-
+    
 
 
     static public function getProduct($data)
