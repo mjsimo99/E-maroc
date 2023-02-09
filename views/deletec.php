@@ -3,9 +3,9 @@
 Redirect::to('index');} 
 ?>
 <?php 
-	if (isset($_POST['IdPrd'])) {
+	if (isset($_POST['IdCat'])) {
 		$exitFurniture = new FurnitureController();
-		$exitFurniture->deleteProduct();
+		$exitFurniture->deleteCategorie();
  	}
 ?>
 

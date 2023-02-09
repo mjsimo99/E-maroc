@@ -6,18 +6,7 @@ $products = $data->getAllproducts();
 $data = new FurnitureController();
 $catégories = $data->getAllcatégorie();
 ?>
-<?php
-// if (isset($_POST['id_categorie'])) {
-//     $existcategorie = new FurnitureController();
-//     $categorie = $existcategorie->getOneProcat();
-// }
-?>
-<?php
-// if(isset($_GET['category'])){
-//     $selected_category = $_GET['category'];
-//     // Filter the products by selected category
-// }
-?>
+
 
 <div class="container mt-5">
     <!-- Filter Form -->
@@ -25,7 +14,7 @@ $catégories = $data->getAllcatégorie();
         <h5>Filter Products</h5>
         <hr>
         <form>
-            <div class="form-group">
+            <div class="form-group mb-2 text-center">
                 <label for="categorySelect">Category</label>
                 <select class="form-control" id="categorySelect" name="categorySelect">
                     <option value="all">Select All</option>
@@ -35,15 +24,18 @@ $catégories = $data->getAllcatégorie();
                 </select>
 
             </div>
-            <div class="form-group mb-2">
-                <label for="priceRange">Price Range</label>
-                <input type="range" class="form-control-range" id="priceRange" min="0" max="1000" step="50">
-                <span id="priceRangeValue"></span>
+            <div class="form-group mb-2 text-center">
+
+                <label for="min_price">Minimum Price*</label>
+                <input type="number" id="min_price" name="min_price" class="form-control" min="0" max="10000" step="25" value="0">
+
+                <label for="max_price">Maximum Price*</label>
+                <input type="number" id="max_price" name="max_price" class="form-control" min="0" max="10000" step="25" value="100">
+
+                <input type="button" value="Filter" onclick="filterByPrice()" class="btn btn-warning mt-2">
 
             </div>
-            <!-- <div class="text-center">
-                <button type="submit" class="btn btn-primary">Filter</button>
-            </div> -->
+
         </form>
     </div>
 
@@ -53,19 +45,16 @@ $catégories = $data->getAllcatégorie();
     <div class="row mt-5 mb-5 ">
         <?php foreach ($products as $product) : ?>
 
-            <div class="col-6 col-md-4 mb-3 product" data-category="<?php echo Furniture::namecategorie(["id_categorie" => $product["id_categorie"]])->nom; ?>" data-page="1">
+            <div class="col-6 col-md-4 mb-3 product" data-category="<?php echo $product['nom']; ?>" data-page="1">
                 <div class="card h-100">
                     <?php echo '<img class="img-size" src="data:image/jpeg;base64,' . base64_encode($product["image"]) . '" />'; ?>
-                    
                     <div class="card-body text-center">
                         <h5 class="card-title text-success"><?php echo $product['libelle']; ?></h5>
                         <p class="card-text"><?php echo $product['description']; ?></p>
 
                         <p class="card-text priceachat"><?php echo $product['prix_achat']; ?></p>
 
-                        <p class="card-text">Categorie: <?php
-                                                        echo Furniture::namecategorie(["id_categorie" => $product["id_categorie"]])->nom;
-                                                        ?></p>
+                        <p class="card-text priceachat"><?php echo $product['nom']; ?></p>
 
                         <form method="post" class="mr-1" action="oneproduct">
                             <input type="hidden" name="IdPrd" value="<?php echo $product['IdPrd']; ?>">
@@ -115,15 +104,36 @@ $catégories = $data->getAllcatégorie();
 <script>
     var productsPerPage = 6;
     var currentPage = 1;
+
     function updateDisplayedProducts() {
-    var products = document.getElementsByClassName("product");
-    for (var i = 0; i < products.length; i++) {
-        if ((i >= (currentPage - 1) * productsPerPage) && (i < currentPage * productsPerPage)) {
-            products[i].style.display = "block";
-        } else {
-            products[i].style.display = "none";
+        var products = document.getElementsByClassName("product");
+        for (var i = 0; i < products.length; i++) {
+            if ((i >= (currentPage - 1) * productsPerPage) && (i < currentPage * productsPerPage)) {
+                products[i].style.display = "block";
+            } else {
+                products[i].style.display = "none";
+            }
         }
     }
-}
+</script>
+<script>
+    function filterByPrice() {
+        var min_price = document.getElementById("min_price").value;
+        var max_price = document.getElementById("max_price").value;
+        var cards = document.getElementsByClassName("card");
+        var parentdiv = document.getElementsByClassName("product");
 
+        for (var i = 0; i < cards.length; i++) {
+            var price = parseFloat(cards[i].getElementsByClassName("priceachat")[0].innerHTML);
+
+            if (price >= min_price && price <= max_price) {
+                cards[i].style.display = "";
+
+            } else {
+                cards[i].style.display = "none";
+                parentdiv[i].style.display = "none";
+
+            }
+        }
+    }
 </script>

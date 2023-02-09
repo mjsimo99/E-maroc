@@ -6,7 +6,7 @@ include('./views/includes/alerts.php');
 require './views/includes/header.php';
 
 $home = new HomeController();
-$pages = ['index','update','delete','logout','login','register','addproduct','addcategorie','product','oneproduct','text','one'];
+$pages = ['index','update','updatec','delete','deletec','logout','login','register','addproduct','addcategorie','product','product2','oneproduct','text','one','cart','checkout','cancelcart','pdashboard','cdashboard'];
 // if(isset($_SESSION['logged']) && $_SESSION['logged'] === true){
 
 

@@ -1,13 +1,12 @@
 <?php
-	  if(isset($_POST['submit'])){
-
-    $data = new FurnitureController();
-    $data->addcatégorie();  
-    }  
-    if(!isset($_SESSION['logged']) || $_SESSION['logged'] !== true){
-      header("location:index.php");
-      }
-
+if (isset($_POST['IdCat'])) {
+    $existProduct = new FurnitureController();
+    $product = $existProduct->getOneCategorie();
+}
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $existProduct = new FurnitureController();
+    $existProduct->updateCategorie();
+}
 ?>
 <div class="container">
   <div class="row content">
@@ -17,13 +16,16 @@
 
       <h3 class="signin-text mb-3">Add Product</h3>
       <form method="post" enctype="multipart/form-data" class="mr-1">
+      <div class="form-group">
+          <input type="hidden" name="IdCat" class="form-control"  value="<?php echo $product->IdCat; ?>">
+        </div>
         <div class="form-group">
           <label for="libelle">Nom*</label>
-          <input type="text" name="nom" class="form-control">
+          <input type="text" name="nom" class="form-control"  value="<?php echo $product->nom; ?>">
         </div>
         <div class="form-group">
           <label for="description_categorie">description*</label>
-          <input type="text" name="description_categorie" class="form-control">
+          <input type="text" name="description_categorie" class="form-control" value="<?php echo $product->description_categorie; ?>">
         </div>
         <!-- <div class="form-group">
           <label for="catégorie">catégorie*</label>

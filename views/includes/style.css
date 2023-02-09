@@ -176,3 +176,23 @@
     .hidden {
     display: none;
   }
+  .img-size{
+    width: 414px;
+    height: 439px;
+  } 
+  .img-size2{
+    width: 385px;
+    height: 439px;
+  }
+  .img_index{
+    width: 319px;
+    height: 330px;
+  }
+  .column_row
+  {
+    flex-direction: column;
+  }
+  .imgdash{
+    width: 70px;
+    height: 80px;
+  }

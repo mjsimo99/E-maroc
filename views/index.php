@@ -99,7 +99,7 @@ $products = $data->getAllproducts();
 
     <div class="card text-center mb-3" style="width: 20rem;">
       <!-- <img src="views/images/laptop.jpg" class="card-img-top" alt="Image"> -->
-      <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($product["image"]) . '" />'; ?>
+      <?php echo '<img class="img_index" src="data:image/jpeg;base64,' . base64_encode($product["image"]) . '" />'; ?>
 
       <div class="card-body">
         <h5 class="card-title text-success"><?php echo $product['libelle']; ?></h5>

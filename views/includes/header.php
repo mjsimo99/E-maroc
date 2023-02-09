@@ -8,6 +8,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="../../../Satoru-MVC2/views/includes/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
 
   <style>
     #offer {
@@ -82,11 +84,14 @@
             <a href="<?php echo BASE_URL; ?>logout" title="Déconnexion" class="btn btn-link mr-2 ">
               <i class="fa fa-user" aria-hidden="true" style="margin-right:10%;"><?php echo $_SESSION['username']; ?></i>
             </a>
+
           </li>
           <a href=""><i class="fa fa-cart-shopping"></i></a>
 
 
         </div>
+        <a href="pdashboard" class="logireg btn btn-outline-success">dashboard</a>
+
         <a href="addproduct" class="logireg btn btn-outline-success">addprod</a>
         <a href="addcategorie" class="logireg btn btn-outline-success">addcat</a>
 

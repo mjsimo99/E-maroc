@@ -2,6 +2,8 @@
 if (isset($_POST['IdPrd'])) {
   $existproduct = new FurnitureController();
   $product = $existproduct->getOneProduct();
+  // die(var_dump($product));
+
 }
 
 ?>        
@@ -24,7 +26,23 @@ if (isset($_POST['IdPrd'])) {
       <h3 class="card-title text-primary"><?php echo $product->libelle; ?></h3>
       <p class="card-text"><small class="text-muted">Product reference: #<?php echo $product->code_barre; ?></small></p>
       <p class="card-text"><strong class="prix-primary">Price: <?php echo $product->prix_final; ?>$</strong></p>
-      <button type="button" class="btn btn-outline-success btn-lg" id="add-to-cart-button">Add to Cart</button>
+      <!-- <button type="button" class="btn btn-outline-success btn-lg" id="add-to-cart-button">Add to Cart</button> -->
+
+      <form method="post" action="<?php echo BASE_URL; ?>checkout">
+        <div class="form-group">
+          <input type="number" name="qty" id="qty" class="form-control" value="1">
+          <input type="text" name="libelle" value="<?php echo $product->libelle; ?>">
+          <input type="text" name="IdPrd" value="<?php echo $product->IdPrd; ?>">
+        </div>
+        <div class="form-group">
+          <!-- <input type="submit" class="btn btn-primary mt-3" value="Ajouter au panier"> -->
+          <input type="submit" class="btn btn-outline-success btn-lg"  value="Ajouter au panier">
+
+        </div>
+      </form>
+
+
+
       <button type="button" class="btn btn-outline-primary btn-lg" id="view-details-button">View Details</button>
     </div>
   </div>
@@ -36,6 +54,7 @@ if (isset($_POST['IdPrd'])) {
         <p class="card-text"><?php echo $product->description;?></p>
       </div>
     </div>
+    
   </div>
 
 
