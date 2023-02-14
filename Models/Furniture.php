@@ -58,7 +58,7 @@ class Furniture
     static public function add($data)
     {
         //print_r($data);
-        $stmt = DB::connect()->prepare("INSERT INTO produit(libelle,code_barre,prix_achat,prix_final,Prix_offre,description,image,id_categorie)VALUES (:libelle,:code_barre,:prix_achat,:prix_final,:Prix_offre,:description,:image,:id_categorie)");
+        $stmt = DB::connect()->prepare("INSERT INTO produit(libelle,code_barre,prix_achat,prix_final,Prix_offre,description,image,id_categorie,qty)VALUES (:libelle,:code_barre,:prix_achat,:prix_final,:Prix_offre,:description,:image,:id_categorie,:qty)");
         $stmt->bindParam(':libelle', $data['libelle'], PDO::PARAM_STR);
         $stmt->bindParam(':code_barre', $data['code_barre'], PDO::PARAM_STR);
         $stmt->bindParam(':prix_final', $data['prix_final'], PDO::PARAM_STR);
@@ -67,6 +67,7 @@ class Furniture
         $stmt->bindParam(':description', $data['description'], PDO::PARAM_STR);
         $stmt->bindParam(':image', $data['image'], PDO::PARAM_STR);
         $stmt->bindParam(':id_categorie', $data['id_categorie'], PDO::PARAM_INT);
+        $stmt->bindParam(':qty', $data['qty'], PDO::PARAM_INT);
 
         if ($stmt->execute()) {
             return 'ok';

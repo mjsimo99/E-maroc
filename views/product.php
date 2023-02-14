@@ -22,6 +22,8 @@ $catégories = $data->getAllcatégorie();
 <div class="container mt-5">
     <!-- Filter Form -->
     <div class="col-12 col-md-3 mb-3 mx-auto">
+    <?php include('./views/includes/alerts.php'); ?>
+
         <h5>Filter Products</h5>
         <hr>
         <form>

@@ -17,7 +17,7 @@ class FurnitureController
 
 		if (isset($_POST['submit'])) {
 			// Check if any of the form fields are empty
-			if (empty($_POST['libelle']) || empty($_POST['code_barre']) || empty($_POST['prix_achat']) || empty($_POST['prix_final']) || empty($_POST['Prix_offre']) || empty($_POST['description']) || empty($_FILES['image'])  || empty($_POST['code_barre'])) {
+			if (empty($_POST['libelle']) || empty($_POST['code_barre']) || empty($_POST['prix_achat']) || empty($_POST['prix_final']) || empty($_POST['Prix_offre']) || empty($_POST['description']) || empty($_FILES['image'])  || empty($_POST['code_barre'] || empty($_POST['qty']))) {
 				// Display error message
 				echo "All form fields are required. Please fill out the form and try again.";
 			} else {
@@ -30,6 +30,7 @@ class FurnitureController
 					'description' => $_POST['description'],
 					'image' => file_get_contents($_FILES['image']['tmp_name']),
 					'id_categorie' => $_POST['id_categorie'],
+					'qty' => $_POST['qty']
 
 				);
 				$result = Furniture::add($data);
@@ -37,7 +38,7 @@ class FurnitureController
 					Session::set('success', 'Produit Ajouté');
 
 
-					Redirect::to('index');
+					Redirect::to('product');
 					// Form was submitted successfully
 				} else {
 					echo $result;
@@ -106,7 +107,7 @@ class FurnitureController
 			$result = Furniture::update($data);
 			if ($result === 'ok') {
 				Session::set('success','Product Modifier');
-				Redirect::to('product');
+				Redirect::to('pdashboard');
 			} else {
 				echo $result;
 							// die(print_r($data));
@@ -121,7 +122,7 @@ class FurnitureController
 			$result = Furniture::delete($data);
 			if ($result === 'ok') {
 				Session::set('success', 'Product Supprimé');
-				Redirect::to('product');
+				Redirect::to('pdashboard');
 			} else {
 				echo $result;
 			}
@@ -170,7 +171,7 @@ class FurnitureController
 					Session::set('success', 'catégorie Ajouté');
 
 
-					Redirect::to('index');
+					Redirect::to('product');
 					// Form was submitted successfully
 				} else {
 					echo $result;

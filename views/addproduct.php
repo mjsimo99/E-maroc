@@ -46,6 +46,10 @@
           <input type="text" name="description" class="form-control">
         </div>
         <div class="form-group">
+          <label for="qty">quantity*</label>
+          <input type="text" name="qty" class="form-control">
+        </div>
+        <div class="form-group">
         <label for="id_catégorie">catégorie*</label>
         <select class="form-control" id="categorySelect" name="id_categorie">
                 <?php foreach ($catégories as $catégorie) : ?>

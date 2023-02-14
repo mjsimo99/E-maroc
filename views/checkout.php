@@ -6,6 +6,7 @@ if (isset($_POST["IdPrd"])) {
     $data = new FurnitureController();
     $product = $data->getOneProduct();
     // die(var_dump($product));
+
     if (!isset($_SESSION["products_" . $product->IdPrd])) $_SESSION["products_" . $product->IdPrd] = array();
     if (
         isset($_SESSION["products_" . $product->IdPrd])
@@ -17,7 +18,7 @@ if (isset($_POST["IdPrd"])) {
     } else {
         if ($product->qty < $_POST["qty"]) {
             Session::set("info", "La quantité disponible est : $product->qty");
-            Redirect::to("cart");
+            Redirect::to("product");
         } else {
             $_SESSION["products_" . $product->IdPrd] = array(
                 "IdPrd" => $product->IdPrd,

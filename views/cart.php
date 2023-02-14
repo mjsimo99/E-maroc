@@ -14,7 +14,8 @@
                 <tbody>
                     <?php foreach ($_SESSION as $name => $product) : ?>
 
-                        <?php if (substr($name, 0, 9) == "products_") : ?>
+                            <?php if (substr($name, 0, 9) == "products_" && isset($product["qty"]) && $product["qty"] > 0) : ?>
+
                             <tr>
                                 <td><?php echo $product["libelle"]; ?></td>
                                 <td><?php echo $product["prix_achat"]; ?></td>
