@@ -74,7 +74,8 @@
 
 
 
-          <?php if (isset($_SESSION['logged']) && $_SESSION['logged'] === true) { ?>
+          <?php 
+if (isset($_SESSION['logged']) && $_SESSION['logged'] === true && $_SESSION['role'] === 'admin') { ?>
 
 
         </ul>
@@ -99,14 +100,35 @@
 
       </div>
     <?php  } ?>
+    <?php 
+if (isset($_SESSION['logged']) && $_SESSION['logged'] === true && $_SESSION['role'] === 'client') { ?>
+
+
+        </ul>
+
+        <div class="d-flex" style="margin-right:5%;" action="register">
+          <li>
+            <a href="<?php echo BASE_URL; ?>logout" title="Déconnexion" class="btn btn-link mr-2 ">
+              <i class="fa fa-user" aria-hidden="true" style="margin-right:10%;"><?php echo $_SESSION['username']; ?></i>
+            </a>
+
+          </li>
+          <a href=""><i class="fa fa-cart-shopping"></i></a>
+
+
+        </div>
+
+
+      </div>
+    <?php  } ?>
     <?php if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== true) { ?>
       </ul>
 
-      <div class="d-flex" style="margin-right:5%;" action="register">
+      <div class="d-flex" style="margin-right:5%;" action="register2">
         <a href="login" class="logireg btn btn-outline-success">Login</a>
 
 
-        <a href="register" class="logireg btn btn-outline-success">Register</a>
+        <a href="register2" class="logireg btn btn-outline-success">Register</a>
       </div>
     </div>
   <?php  } ?>
@@ -116,22 +138,10 @@
   </nav>
 
 
-  <table  id="cart-table" class="table hidden table-striped table-dark text-white">
-  <thead>
-    <tr>
-      <th>id</th>
-      <th>product</th>
-      <th>libelle</th>
-      <th>prix</th>
-      <th>quantity</th>
-      <th>total</th>
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
 
-    </tr>
 
-  </tbody>
-</table>
+
+
+
+

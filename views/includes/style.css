@@ -196,3 +196,19 @@
     width: 70px;
     height: 80px;
   }
+
+
+
+
+
+  
+  .custom-input {
+    width: 60px;
+    height: 40
+    px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+  }

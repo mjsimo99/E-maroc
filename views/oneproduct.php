@@ -30,13 +30,13 @@ if (isset($_POST['IdPrd'])) {
 
       <form method="post" action="<?php echo BASE_URL; ?>checkout">
         <div class="form-group">
-          <input type="number" name="qty" id="qty" class="form-control" value="1">
-          <input type="text" name="libelle" value="<?php echo $product->libelle; ?>">
-          <input type="text" name="IdPrd" value="<?php echo $product->IdPrd; ?>">
+        <input class="text-center custom-input" type="number" name="qty" id="qty" value="1">
+          <input type="hidden" name="libelle" value="<?php echo $product->libelle; ?>">
+          <input type="hidden" name="IdPrd" value="<?php echo $product->IdPrd; ?>">
         </div>
-        <div class="form-group">
+        <div class="form-group mt-3 mb-3">
           <!-- <input type="submit" class="btn btn-primary mt-3" value="Ajouter au panier"> -->
-          <input type="submit" class="btn btn-outline-success btn-lg"  value="Ajouter au panier">
+          <input type="submit" class="btn btn-outline-success btn-lg w-100"  value="Ajouter au panier">
 
         </div>
       </form>
@@ -60,5 +60,4 @@ if (isset($_POST['IdPrd'])) {
 
 
 </div>
-
 

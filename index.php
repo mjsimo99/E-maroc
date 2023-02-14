@@ -2,11 +2,11 @@
 <?php
 
 require_once './autoload.php';
-include('./views/includes/alerts.php');
+// include('./views/includes/alerts.php');
 require './views/includes/header.php';
 
 $home = new HomeController();
-$pages = ['index','update','updatec','delete','deletec','logout','login','register','addproduct','addcategorie','product','product2','oneproduct','text','one','cart','checkout','cancelcart','pdashboard','cdashboard'];
+$pages = ['index','update','updatec','delete','deletec','logout','login','register','addproduct','addcategorie','product','product2','oneproduct','text','one','cart','checkout','cancelcart','pdashboard','cdashboard','addOrder','clearcart','register2','odashboard','validate','deleteorder'];
 // if(isset($_SESSION['logged']) && $_SESSION['logged'] === true){
 
 

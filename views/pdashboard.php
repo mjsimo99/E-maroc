@@ -1,30 +1,27 @@
 <?php
 $data = new FurnitureController();
 $products = $data->getAllproducts();
-// $totalproduct = $data->getTotal();
-// $totalsResilie = $data->outofstock();
-// $totalsprice = $data->totalprice();
-// $totalsactive = $data->instock();
 
 
 ?>
 
-<?php if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== true) {
-
+<?php if (!isset($_SESSION['logged']) || $_SESSION['logged'] !== true || $_SESSION['role'] !== 'admin') {
     Redirect::to('index');
 }
 ?>
 
 <div class="d-flex mx-5 mt-5 justify-content-center flex-wrap">
     <div class="card p-3 mx-2 text-center statistic mb-3">
-    <a href=" <?php echo BASE_URL; ?>pdashboard" class="btn btn-success btn-primary mr-2 mb-2">product</a>
+        <a href=" <?php echo BASE_URL; ?>pdashboard" class="btn btn-success btn-primary mr-2 mb-2">product</a>
     </div>
 
     <div class="card p-3 mx-2 text-center statistic mb-3">
-    <a href=" <?php echo BASE_URL; ?>cdashboard" class="btn btn-info btn-primary mr-2 mb-2">categorie</a>
+        <a href=" <?php echo BASE_URL; ?>cdashboard" class="btn btn-info btn-primary mr-2 mb-2">categorie</a>
     </div>
-
+    <div class="card p-3 mx-2 text-center statistic mb-3">
+        <a href=" <?php echo BASE_URL; ?>odashboard" class="btn btn-dark btn-primary mr-2 mb-2">Client-Orders</a>
     </div>
+</div>
 
 </div>
 
@@ -62,7 +59,7 @@ $products = $data->getAllproducts();
                                         <td class="pt-3 pb-4" scope="row"><?php echo $product['libelle']; ?></td>
                                         <td class="pt-3 pb-4"><?php echo $product['description']; ?></td>
                                         <td class="pt-3 pb-4"><?php echo $product['prix_achat']; ?></td>
-                                        <td class="pt-3 pb-4"><?php echo $product['qty']?></td>
+                                        <td class="pt-3 pb-4"><?php echo $product['qty'] ?></td>
                                         <td class="d-flex flex-row pt-3 pb-4">
                                             <form method="POST" class="mr-1" action="update">
                                                 <input type="hidden" name="IdPrd" value="<?php echo $product['IdPrd']; ?>">

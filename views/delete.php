@@ -6,6 +6,7 @@ Redirect::to('index');}
 	if (isset($_POST['IdPrd'])) {
 		$exitFurniture = new FurnitureController();
 		$exitFurniture->deleteProduct();
+
  	}
 ?>
 

@@ -4,8 +4,8 @@
     $data = new FurnitureController();
     $data->addcatégorie();  
     }  
-    if(!isset($_SESSION['logged']) || $_SESSION['logged'] !== true){
-      header("location:index.php");
+    if(!isset($_SESSION['logged']) || $_SESSION['logged'] !== true || $_SESSION['role'] !== 'admin'){
+      Redirect::to('index');
       }
 
 ?>
