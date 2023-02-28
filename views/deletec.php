@@ -7,5 +7,6 @@ Redirect::to('index');}
 		$exitFurniture = new FurnitureController();
 		$exitFurniture->deleteCategorie();
  	}
-?>
+	
+	?>
 

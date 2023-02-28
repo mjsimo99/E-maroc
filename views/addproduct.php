@@ -10,6 +10,7 @@
     if(!isset($_SESSION['logged']) || $_SESSION['logged'] !== true){
       header("location:index.php");
       }
+      
 
 ?>
 <div class="container">

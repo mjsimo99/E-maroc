@@ -108,13 +108,50 @@ $catégories = $data->getAllcatégorie();
                 products[i].style.display = "none";
             }
         }
-        var newUrl = window.location.href.split("?")[0] + "?category=" + selectedCategory;
-        window.history.pushState({}, "", newUrl);
+        // var newUrl = window.location.href.split("?")[0] + "?category=" + selectedCategory;
+        // window.history.pushState({}, "", newUrl);
     });
 </script>
 
 
-<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script>
     var productsPerPage = 6;
     var currentPage = 1;
     function updateDisplayedProducts() {
@@ -128,4 +165,4 @@ $catégories = $data->getAllcatégorie();
     }
 }
 
-</script>
+</script> -->
