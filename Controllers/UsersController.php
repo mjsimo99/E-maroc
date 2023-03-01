@@ -12,6 +12,7 @@ class UsersController {
 				$_SESSION['logged'] = true;
 				$_SESSION['email'] = $result->email;
 				$_SESSION['username'] = $result->username;
+				$_SESSION['id']=$result->id;
 				$_SESSION['role'] = $result->role;
 				// die(print_r($_SESSION));
 

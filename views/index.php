@@ -115,7 +115,7 @@ $products = $data->getAllproducts();
 
 
 <div class="text-center" style=" margin: 2% 0px;">
-<h2 class="display-8 text-center py-2" style="background-color:#FF9900;">Product</h2>
+  <h2 class="display-8 text-center py-2" style="background-color:#FF9900;">Product</h2>
 
 </div>
 <div class="all d-flex justify-content-around mb-4 flex-wrap col-12 col-sm-10 mx-auto mt-3">

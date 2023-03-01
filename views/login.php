@@ -6,7 +6,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-<div class="container">
+<div class="container" style="margin-top: 172px;">
   <div class="row content">
     <div class="col-md-6 mb-3">
       <img src="views/images/laptop2.png" width="100%" ;>

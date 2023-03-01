@@ -14,13 +14,13 @@
                 <tbody>
                     <?php foreach ($_SESSION as $name => $product) : ?>
 
-                            <?php if (substr($name, 0, 9) == "products_" && isset($product["qty"]) && $product["qty"] > 0) : ?>
+                        <?php if (substr($name, 0, 9) == "products_" && isset($product["qty"]) && $product["qty"] > 0) : ?>
 
                             <tr>
                                 <td><?php echo $product["libelle"]; ?></td>
                                 <td><?php echo $product["prix_achat"]; ?></td>
                                 <td class="text-center">
-                                <?php echo $product["qty"]; ?>
+                                    <?php echo $product["qty"]; ?>
                                 </td>
                                 <td id="total-<?php echo $product["IdPrd"]; ?>"><?php echo $product["total"]; ?>Dh</td>
                                 <td>
@@ -60,7 +60,7 @@
                     </tr>
                 </tbody>
             </table>
-
+                
             <div class="text-center">
                 <button type="button" class="btn btn-primary" id="buy-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Acheter
@@ -69,15 +69,7 @@
                     vider le panier
                 </button>
             </div>
-            <!-- Modal -->
-            <!-- <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <form action="addOrder" method="post" style="width: 100%; max-width: 500px; padding: 2rem; margin: auto;">
-
-                    </div>
-                </div>
-            </div> -->
+           
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -151,28 +143,3 @@
 
 
 </div>
-
-
-
-<!-- <script>
-    let qtyInputs = document.querySelectorAll("input[type='number']");
-
-    qtyInputs.forEach(function(input) {
-        input.addEventListener("change", function() {
-            let qty = input.value;
-            let price = input.dataset.price;
-            let productId = input.id.split("-")[1];
-            let total = qty * price;
-
-            // Update the total TTC for the product
-            document.querySelector("#total-" + productId).textContent = total + " Dh";
-
-            // Calculate the new total TTC
-            let totalTTC = 0;
-            qtyInputs.forEach(function(input) {
-                totalTTC += parseInt(input.value) * parseInt(input.dataset.price);
-            });
-            document.querySelector("#amount").textContent = totalTTC + " Dh";
-        });
-    });
-</script> -->

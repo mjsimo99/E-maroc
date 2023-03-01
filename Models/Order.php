@@ -9,7 +9,7 @@ class Order
     try {
         $stmt = DB::connect()->prepare('INSERT INTO orders (client, libelle, IdPrd, qty, prix_achat, total)
             VALUES (:client, :libelle, :IdPrd, :qty, :prix_achat, :total)');
-        $stmt->bindparam(':client', $_SESSION['username']);
+        $stmt->bindparam(':client', $_SESSION['id']);
         $stmt->bindParam(':libelle', $orderData['libelle']);
         $stmt->bindParam(':IdPrd', $orderData['IdPrd']);
         $stmt->bindParam(':qty', $orderData['qty']);

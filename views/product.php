@@ -7,22 +7,16 @@ $data = new FurnitureController();
 $catégories = $data->getAllcatégorie();
 ?>
 <?php
-// if (isset($_POST['id_categorie'])) {
-//     $existcategorie = new FurnitureController();
-//     $categorie = $existcategorie->getOneProcat();
-// }
+
 ?>
 <?php
-// if(isset($_GET['category'])){
-//     $selected_category = $_GET['category'];
-//     // Filter the products by selected category
-// }
+
 ?>
 
 <div class="container mt-5">
     <!-- Filter Form -->
     <div class="col-12 col-md-3 mb-3 mx-auto">
-    <?php include('./views/includes/alerts.php'); ?>
+        <?php include('./views/includes/alerts.php'); ?>
 
         <h5>Filter Products</h5>
         <hr>
@@ -51,35 +45,29 @@ $catégories = $data->getAllcatégorie();
 
 
     <!-- Product Grid -->
-
-    <div class="row mt-5 mb-5 ">
-        <?php foreach ($products as $product) : ?>
-
-            <div class="col-6 col-md-4 mb-3 product" data-category="<?php echo Furniture::namecategorie(["id_categorie" => $product["id_categorie"]])->nom; ?>" data-page="1">
-                <div class="card h-100">
-                    <?php echo '<img class="img-size" src="data:image/jpeg;base64,' . base64_encode($product["image"]) . '" />'; ?>
-                    
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-success"><?php echo $product['libelle']; ?></h5>
-                        <p class="card-text"><?php echo $product['description']; ?></p>
-
-                        <p class="card-text priceachat"><?php echo $product['prix_achat']; ?></p>
-
-                        <p class="card-text">Categorie: <?php
-                                                        echo Furniture::namecategorie(["id_categorie" => $product["id_categorie"]])->nom;
-                                                        ?></p>
-
-                        <form method="post" class="mr-1" action="oneproduct">
-                            <input type="hidden" name="IdPrd" value="<?php echo $product['IdPrd']; ?>">
-                            <button class="btn btn-outline-success btn-lg">détails</button>
-                        </form>
-
-                    </div>
+    <div class="row mt-5 mb-5">
+    <?php foreach ($products as $product) : ?>
+        <div class="col-sm-6 col-md-4 mb-3 product" data-category="<?php echo Furniture::namecategorie(["id_categorie" => $product["id_categorie"]])->nom; ?>" data-page="1">
+            <div class="card h-100">
+                <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($product["image"]) . '" style="height: 400px; width: auto;" />'; ?>
+                <div class="card-body text-center">
+                    <h5 class="card-title text-success"><?php echo $product['libelle']; ?></h5>
+                    <p class="card-text"><?php echo $product['description']; ?></p>
+                    <p class="card-text priceachat"><?php echo $product['prix_achat']; ?></p>
+                    <p class="card-text">Categorie: <?php echo Furniture::namecategorie(["id_categorie" => $product["id_categorie"]])->nom; ?></p>
+                    <form method="post" class="mr-1" action="oneproduct">
+                        <input type="hidden" name="IdPrd" value="<?php echo $product['IdPrd']; ?>">
+                        <button class="btn btn-outline-success btn-lg">détails</button>
+                    </form>
                 </div>
             </div>
-        <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
 
-    </div>
+
+
+
 
     <!-- Pagination -->
     <nav aria-label="Product Grid Pagination">
