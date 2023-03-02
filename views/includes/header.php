@@ -102,16 +102,16 @@
 
           </ul>
 
-          <div class="d-flex" style="margin-right:5%;" action="register">
-            <li>
-              <a href="<?php echo BASE_URL; ?>logout" title="Déconnexion" class="btn btn-link mr-2 ">
-                <i class="fa fa-user" aria-hidden="true" style="margin-right:10%;"><?php echo $_SESSION['username']; ?></i>
-              </a>
-
-            </li>
-            <a href=""><i class="fa fa-cart-shopping"></i></a>
-
-
+          <div class="dropdown" style="margin-right: 49px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm0 4a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM5.5 9.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z" />
+              </svg>
+              <?php echo $_SESSION['username']; ?>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+              <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>logout">Logout</a></li>
+            </ul>
           </div>
 
 

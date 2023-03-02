@@ -1,3 +1,14 @@
+
+<?php
+
+if(isset($_POST['pay'])){
+
+    $data = new OrdersController();
+    $data->addOrder($data);  
+    }  
+?>
+
+
 <div class="container">
     <div class="row flex-column">
         <div class="col-md-8 bg-white mt-5">
@@ -41,6 +52,8 @@
         </div>
 
         <div class="col-4 col-md-4 float-right bg-white mb-5 mt-5">
+                  <?php include('./views/includes/alerts.php'); ?>
+
             <!-- <table class="table table-bordered border-primary"> -->
             <table class="table align-middle mb-0 bg-light mb-5">
                 <tbody>
@@ -98,7 +111,7 @@
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <form action="addOrder" method="post" style="width: 100%; max-width: 500px; padding: 2rem; margin: auto;">
+                        <form  method="post" style="width: 100%; max-width: 500px; padding: 2rem; margin: auto;">
                             <div class="form-group mb-3">
                                 <label for="card-number" class="form-label">Card Number</label>
                                 <input type="text" class="form-control" id="card-number" aria-describedby="emailHelp" required>
@@ -117,9 +130,7 @@
                             </div>
 
                             <div style="text-align: center;">
-                                <!-- <button class="btn btn-primary buy" id="buy-button1" type="submit" id="paypalbutton">
-                                    <i class="fa fa-cc-paypal fa-brands"></i> Pay
-                                </button> -->
+                              
                                 <input type="submit" name="pay" value="Pay">
 
                             </div>
