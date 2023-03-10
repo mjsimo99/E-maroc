@@ -64,11 +64,15 @@
             <a class="nav-link active" aria-current="page" href="index">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="product">product</a>
+            <a class="nav-link active" href="product2">product</a>
           </li>
-          <li class="nav-item" id="add-to-cart">
+          <li class="nav-item" style="width: 100px;">
+            <a class="nav-link active d-flex align-items-center justify-content-center" href="cart">
+              <i class="bi bi-cart4 me-2"></i> Cart
+            </a>
+          </li>
 
-          </li>
+
 
 
         </ul>
@@ -101,6 +105,12 @@
 
 
           </ul>
+
+          <div class="d-flex">
+          <input type="hidden" name="id" value="<?php echo $_SESSION['id']; ?>">
+
+            <a href="profile" class="logireg btn btn-outline-success">profile</a>
+
 
           <div class="dropdown" style="margin-right: 49px;">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="adminDropdown" data-bs-toggle="dropdown" aria-expanded="false">

@@ -114,19 +114,19 @@ if(isset($_POST['pay'])){
                         <form  method="post" style="width: 100%; max-width: 500px; padding: 2rem; margin: auto;">
                             <div class="form-group mb-3">
                                 <label for="card-number" class="form-label">Card Number</label>
-                                <input type="text" class="form-control" id="card-number" aria-describedby="emailHelp" required>
+                                <input type="text" class="form-control" id="card-number" aria-describedby="emailHelp" placeholder="111111111111" required>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="card-holder-name" class="form-label">Cardholder name</label>
-                                <input type="text" class="form-control" id="card-holder-name" required>
+                                <label for="card-holder-name" class="form-label">nom complet</label>
+                                <input type="text" class="form-control" id="card-holder-name" placeholder="yourname" required>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="expiry-date">Expiry date</label>
-                                <input class="form-control expire" type="text" placeholder="MM / YYYY" id="expiry-date" required />
+                                <label for="expiry-date">e-mail</label>
+                                <input class="form-control expire" type="text" placeholder="exemple@mail.com" id="expiry-date" required />
                             </div>
                             <div class="form-group mb-3">
-                                <label for="security-number">Security Number</label>
-                                <input class="form-control ccv" type="text" placeholder="CVC" maxlength="3" id="security-number" required />
+                                <label for="security-number">numéro de téléphone</label>
+                                <input class="form-control ccv" type="text" placeholder="+212 555555555" maxlength="3" id="security-number" required />
                             </div>
 
                             <div style="text-align: center;">

@@ -119,8 +119,8 @@ $products = $data->getAllproducts();
 
 </div>
 <div class="all d-flex justify-content-around mb-4 flex-wrap col-12 col-sm-10 mx-auto mt-3">
-
   <?php foreach ($products as $product) : ?>
+    <?php if ($product['p_status'] == 1) : ?>
 
     <div class="card text-center mb-3" style="width: 20rem;">
       <!-- <img src="views/images/laptop.jpg" class="card-img-top" alt="Image"> -->
@@ -132,8 +132,8 @@ $products = $data->getAllproducts();
         <a href="#" class="btn btn-outline-success btn-lg">Learn More</a>
       </div>
     </div>
+    <?php endif ?>
   <?php endforeach; ?>
-
 
 
 

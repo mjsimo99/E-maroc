@@ -1,17 +1,10 @@
 <?php
 $data = new FurnitureController();
 $products = $data->getAllproducts();
-?>
-<?php
-$data = new FurnitureController();
 $catégories = $data->getAllcatégorie();
-?>
-<?php
 
 ?>
-<?php
 
-?>
 
 <div class="container mt-5">
     <!-- Filter Form -->
@@ -47,6 +40,8 @@ $catégories = $data->getAllcatégorie();
     <!-- Product Grid -->
     <div class="row mt-5 mb-5">
     <?php foreach ($products as $product) : ?>
+        <?php if ($product['p_status'] == 1) : ?>
+
         <div class="col-sm-6 col-md-4 mb-3 product" data-category="<?php echo Furniture::namecategorie(["id_categorie" => $product["id_categorie"]])->nom; ?>" data-page="1">
             <div class="card h-100">
                 <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($product["image"]) . '" style="height: 400px; width: auto;" />'; ?>
@@ -62,6 +57,7 @@ $catégories = $data->getAllcatégorie();
                 </div>
             </div>
         </div>
+        <?php endif ?>
     <?php endforeach; ?>
 </div>
 

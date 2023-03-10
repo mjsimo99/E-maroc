@@ -3,12 +3,32 @@
 class FurnitureController
 {
 
+
+
+
+	
+
+
+
+	public function getAllProducts_2()
+	{
+		$page =  ($_SERVER['REQUEST_URI'][(strlen($_SERVER['REQUEST_URI']) - 1)]);
+		if ($page == 1 ||  !is_numeric($page)) $count = 0;
+		else $count = ($page - 1) * 6;
+		$products = Furniture::getAll_2($count);
+		return $products;
+	}
+
+
+
 	public function getAllproducts()
 	{
 		$furnitures = Furniture::getAll();
 
 		return $furnitures;
 	}
+
+
 
 
 	public function addProduct()
@@ -46,7 +66,17 @@ class FurnitureController
 			}
 		}
 	}
-	
+
+	public function getOneProductorder()
+	{
+		if (isset($_POST['id'])) {
+			$data = array(
+				'id' => $_POST['id'],
+			);
+			$furniture = Furniture::getProductsOrder($data);
+			return $furniture;
+		}
+	}
 	public function getOneProduct()
 	{
 		if (isset($_POST['IdPrd'])) {
@@ -57,16 +87,16 @@ class FurnitureController
 			return $furniture;
 		}
 	}
-	public function getNameCategorie()
-	{
-		if (isset($_POST['id_categorie'])) {
-			$data = array(
-				'id_categorie' => $_POST['id_categorie'],
-			);
-			$categorie = Furniture::namecategorie($data);
-			return $categorie;
-		}
-	}
+	// public function getNameCategorie()
+	// {
+	// 	if (isset($_POST['id_categorie'])) {
+	// 		$data = array(
+	// 			'id_categorie' => $_POST['id_categorie'],
+	// 		);
+	// 		$categorie = Furniture::namecategorie($data);
+	// 		return $categorie;
+	// 	}
+	// }
 	public function emptyCart($IdPrd, $prix_achat)
 	{
 		unset($_SESSION["products_" . $IdPrd]);
@@ -74,6 +104,27 @@ class FurnitureController
 		$_SESSION["totaux"] -= $prix_achat;
 		Redirect::to("cart");
 	}
+
+
+
+	public function hideproduct()
+	{
+		$IdPrd = $_POST['IdPrd'];
+		$p_status = 0;
+		return Furniture::hideproducts($IdPrd, $p_status);
+	}
+	public function showproduct()
+	{
+		$IdPrd = $_POST['IdPrd'];
+		$p_status = 1;
+		return Furniture::hideproducts($IdPrd, $p_status);
+	}
+
+
+
+
+
+
 
 
 
@@ -106,11 +157,11 @@ class FurnitureController
 
 			$result = Furniture::update($data);
 			if ($result === 'ok') {
-				Session::set('success','Product Modifier');
+				Session::set('success', 'Product Modifier');
 				Redirect::to('pdashboard');
 			} else {
 				echo $result;
-							// die(print_r($data));
+				// die(print_r($data));
 
 			}
 		}
@@ -212,14 +263,14 @@ class FurnitureController
 				// Add the old image to the data array
 				$data['image_categorie'] = $furniture->image_categorie;
 			}
-			
+
 			$result = Furniture::updatecategorie($data);
 			if ($result === 'ok') {
-				Session::set('success','categorie Modifier');
+				Session::set('success', 'categorie Modifier');
 				Redirect::to('cdashboard');
 			} else {
 				echo $result;
-							// die(print_r($data));
+				// die(print_r($data));
 
 			}
 		}
@@ -238,4 +289,3 @@ class FurnitureController
 		}
 	}
 }
-

@@ -5,7 +5,7 @@
 if (isset($_POST['id'])) {
     $ordersController = new OrdersController();
 
-    $valide =  $ordersController->validateOrders();
+    $send =  $ordersController->sendOrder();
 
     Redirect::to('oodashboard');
 

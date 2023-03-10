@@ -19,7 +19,10 @@ $products = $data->getAllproducts();
         <a href=" <?php echo BASE_URL; ?>cdashboard" class="btn btn-info btn-primary mr-2 mb-2">categorie</a>
     </div>
     <div class="card p-3 mx-2 text-center statistic mb-3">
-        <a href=" <?php echo BASE_URL; ?>odashboard" class="btn btn-dark btn-primary mr-2 mb-2">Client-Orders</a>
+        <a href=" <?php echo BASE_URL; ?>odashboard" class="btn btn-dark btn-primary mr-2 mb-2">Client</a>
+    </div>
+    <div class="card p-3 mx-2 text-center statistic mb-3">
+        <a href=" <?php echo BASE_URL; ?>oodashboard" class="btn btn-danger btn-primary mr-2 mb-2">Client-Orders</a>
     </div>
 </div>
 
@@ -48,6 +51,8 @@ $products = $data->getAllproducts();
                                     <th scope="col">name</th>
                                     <th scope="col">description</th>
                                     <th scope="col">prix</th>
+                                    <th scope="col">quantity</th>
+
                                     <th scope="col">Statut</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -60,6 +65,12 @@ $products = $data->getAllproducts();
                                         <td class="pt-3 pb-4"><?php echo $product['description']; ?></td>
                                         <td class="pt-3 pb-4"><?php echo $product['prix_achat']; ?></td>
                                         <td class="pt-3 pb-4"><?php echo $product['qty'] ?></td>
+                                        <td class="pt-3 pb-4"><?php echo $product['p_status']
+                                                    ?
+                                                    '<span class="badge text-bg-success">Product showed</span>'
+                                                    :
+                                                    '<span class="badge text-bg-danger">Product hidden</span>'; ?>
+                                        </td>
                                         <td class="d-flex flex-row pt-3 pb-4">
                                             <form method="POST" class="mr-1" action="update">
                                                 <input type="hidden" name="IdPrd" value="<?php echo $product['IdPrd']; ?>">
@@ -68,6 +79,14 @@ $products = $data->getAllproducts();
                                             <form method="POST" class="ms-1" action="delete">
                                                 <input type="hidden" name="IdPrd" value="<?php echo $product['IdPrd']; ?>">
                                                 <button class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></button>
+                                            </form>
+                                            <form method="POST" class="ms-1" action="hideproduct">
+                                                <input type="hidden" name="IdPrd" value="<?php echo $product['IdPrd']; ?>">
+                                                <button class="btn btn-sm btn-secondary"><i class="bi bi-eye-slash"></i></button>
+                                            </form>
+                                            <form method="POST" class="ms-1" action="showproduct">
+                                                <input type="hidden" name="IdPrd" value="<?php echo $product['IdPrd']; ?>">
+                                                <button class="btn btn-sm btn-info"><i class="bi bi-eye-fill"></i></button>
                                             </form>
                                         </td>
                                     </tr>

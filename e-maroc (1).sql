@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2023 at 09:41 PM
+-- Generation Time: Mar 09, 2023 at 11:59 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -66,7 +66,8 @@ CREATE TABLE `client` (
 INSERT INTO `client` (`IdCl`, `username`, `phone`, `adresse`, `ville`, `email`, `password`) VALUES
 (1, 'saxafe', 1, 'Quia voluptatem Sap', 'Aliquid in possimus', 'ravaqew@mailinator.com', '$2y$12$KOtg6Fz1iSOVG4mn2Z9oW.lf9F4RO7iqAbaUgJH01hlhEW2synHmW'),
 (90, 'vixoritu', 1, 'Vel aut ipsa eiusmo', 'Autem beatae delectu', 'korehof@mailinator.com', '$2y$12$Dk.uGsQzCckZvETl4sPQp.M4s9zxQorAw44hFOP3DEJGuFwGtMrQO'),
-(91, 'fasozymowi', 1, 'Est tempore vitae s', 'Molestiae odio reici', 'zuvy@mailinator.com', '$2y$12$zzAo.vHJn4WmkVAV9z6zqe1OosSLVEsSFIwIqY6u5b4jaRLK1WYL.');
+(91, 'fasozymowi', 1, 'Est tempore vitae s', 'Molestiae odio reici', 'zuvy@mailinator.com', '$2y$12$zzAo.vHJn4WmkVAV9z6zqe1OosSLVEsSFIwIqY6u5b4jaRLK1WYL.'),
+(92, 'sedik', 96, 'aaaaaaaaaaaaaaaa', 'xxxxxxxxxx', 'sedik@gmail.com', '$2y$12$pcnDvb0UgZgCFLP9UHmK0OZYE8PawNWhxe1c3MY7DJ.q4K/MeL0LK');
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,9 @@ INSERT INTO `componentproduct` (`id`, `productId`, `commandId`, `qty`, `unitPric
 (90, 37, 195, 1, 77, 77),
 (91, 39, 196, 1, 70, 70),
 (92, 38, 197, 1, 15, 15),
-(93, 42, 197, 1, 43, 43);
+(93, 42, 197, 1, 43, 43),
+(94, 45, 198, 1, 93, 93),
+(95, 39, 198, 3, 70, 210);
 
 -- --------------------------------------------------------
 
@@ -115,11 +118,12 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id`, `creationdate`, `sendingDate`, `deliveryDate`, `totalprice`, `client`, `status`) VALUES
-(193, '2023-03-05', '0000-00-00', '0000-00-00', 15, 13, 0),
-(194, '2023-03-05', '0000-00-00', '0000-00-00', 77, 13, 0),
-(195, '2023-03-05', '0000-00-00', '0000-00-00', 77, 13, 0),
+(193, '2023-03-05', '2023-03-08', '2023-03-08', 15, 13, 1),
+(194, '2023-03-05', '2023-03-09', '2023-03-09', 77, 13, 1),
+(195, '2023-03-05', '2023-03-09', '0000-00-00', 77, 13, 0),
 (196, '2023-03-05', '0000-00-00', '0000-00-00', 70, 13, 0),
-(197, '2023-03-05', '0000-00-00', '0000-00-00', 58, 13, 0);
+(197, '2023-03-05', '0000-00-00', '0000-00-00', 58, 13, 0),
+(198, '2023-03-07', '0000-00-00', '0000-00-00', 303, 92, 0);
 
 -- --------------------------------------------------------
 
@@ -205,7 +209,8 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`) VALUES
 (88, 'saxafe', 'ravaqew@mailinator.com', '$2y$12$KOtg6Fz1iSOVG4mn2Z9oW.lf9F4RO7iqAbaUgJH01hlhEW2synHmW', 'client'),
 (89, 'vazodiper', 'gigy@mailinator.com', '$2y$12$Ptk7hOKx5HQN8/N5.G9PIuJJSc1pVrqXszV55WFJ2JhUCFOV0Btmi', 'client'),
 (90, 'vixoritu', 'korehof@mailinator.com', '$2y$12$Dk.uGsQzCckZvETl4sPQp.M4s9zxQorAw44hFOP3DEJGuFwGtMrQO', 'client'),
-(91, 'fasozymowi', 'zuvy@mailinator.com', '$2y$12$zzAo.vHJn4WmkVAV9z6zqe1OosSLVEsSFIwIqY6u5b4jaRLK1WYL.', 'client');
+(91, 'fasozymowi', 'zuvy@mailinator.com', '$2y$12$zzAo.vHJn4WmkVAV9z6zqe1OosSLVEsSFIwIqY6u5b4jaRLK1WYL.', 'client'),
+(92, 'sedik', 'sedik@gmail.com', '$2y$12$pcnDvb0UgZgCFLP9UHmK0OZYE8PawNWhxe1c3MY7DJ.q4K/MeL0LK', 'client');
 
 --
 -- Indexes for dumped tables
@@ -272,19 +277,19 @@ ALTER TABLE `catégorie`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `IdCl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `IdCl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `componentproduct`
 --
 ALTER TABLE `componentproduct`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=199;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -302,7 +307,7 @@ ALTER TABLE `produit`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- Constraints for dumped tables

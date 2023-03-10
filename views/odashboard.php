@@ -1,6 +1,6 @@
 <?php
-$data = new OrdersController();
-$products = $data->getAllOrders();
+$data = new UsersController();
+$clinets = $data->getAllclients();
 
 // $ordersController = new OrdersController();
 // $ordersController->validateOrder($orderId);
@@ -23,7 +23,10 @@ $products = $data->getAllOrders();
         <a href=" <?php echo BASE_URL; ?>cdashboard" class="btn btn-info btn-primary mr-2 mb-2">Categorie</a>
     </div>
     <div class="card p-3 mx-2 text-center statistic mb-3">
-        <a href=" <?php echo BASE_URL; ?>odashboard" class="btn btn-dark btn-primary mr-2 mb-2">Client-Orders</a>
+        <a href=" <?php echo BASE_URL; ?>odashboard" class="btn btn-dark btn-primary mr-2 mb-2">Client</a>
+    </div>
+    <div class="card p-3 mx-2 text-center statistic mb-3">
+        <a href=" <?php echo BASE_URL; ?>oodashboard" class="btn btn-danger btn-primary mr-2 mb-2">Client-Orders</a>
     </div>
 
 </div>
@@ -40,9 +43,7 @@ $products = $data->getAllOrders();
         <div class="col-md-10 mx-auto">
             <div class="card">
                 <div class="card-body bg-light">
-                    <a href=" <?php echo BASE_URL; ?>addproduct" class="btn btn-sm btn-primary mr-2 mb-2">
-                        <i class="bi bi-plus-circle"></i>
-                    </a>
+                   
                     <?php include('./views/includes/alerts.php'); ?>
                     <div class="table-responsive">
 
@@ -50,40 +51,21 @@ $products = $data->getAllOrders();
                             <thead>
                                 <tr>
                                     <th scope="col">client</th>
-                                    <th scope="col">libelle</th>
-                                    <th scope="col">quantity</th>
-                                    <th scope="col">total</th>
-                                    <th scope="col">status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">phone</th>
+                                    <th scope="col">adresse</th>
+                                    <th scope="col">ville</th>
+                                    <th scope="col">email</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($products as $product) : ?>
+                                <?php foreach ($clinets as $clinet) : ?>
                                     <tr>
-                                        <td class="pt-3 pb-4" scope="row"><?php echo $product['client']; ?></td>
-                                        <td class="pt-3 pb-4"><?php echo $product['libelle']; ?></td>
-                                        <td class="pt-3 pb-4"><?php echo $product['qty']; ?></td>
-                                        <td class="pt-3 pb-4"><?php echo $product['total'] ?></td>
-                                        <td class="pt-3 pb-4"><?php echo $product['status']
-                                                    ?
-                                                    '<span class="badge text-bg-success">Product Shipped</span>'
-                                                    :
-                                                    '<span class="badge text-bg-danger">Need Validation</span>'; ?>
-                                        </td>
-                                        <td class="d-flex flex-row pt-3 pb-4">
-                                            <form action="validate" method="post">
-                                                <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
-                                                <button class="btn btn-sm btn-success" type="submit" value="Validate"> <i class="bi bi-check-circle-fill"></i>
-                                                </button>
-                                                    
-                                            </form>
-
-
-                                            <form method="POST" class="ms-1" action="deleteorder">
-                                                <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
-                                                <button class="btn btn-sm btn-danger"><i class="bi bi-trash3-fill"></i></button>
-                                            </form>
-                                        </td>
+                                        <td class="pt-3 pb-4" scope="row"><?php echo $clinet['username']; ?></td>
+                                        <td class="pt-3 pb-4"><?php echo $clinet['phone']; ?></td>
+                                        <td class="pt-3 pb-4"><?php echo $clinet['adresse']; ?></td>
+                                        <td class="pt-3 pb-4"><?php echo $clinet['ville']; ?></td>
+                                        <td class="pt-3 pb-4"><?php echo $clinet['email'];?></td>
+                                        
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

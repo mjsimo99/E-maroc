@@ -35,3 +35,6 @@ if (isset($_POST["IdPrd"])) {
 } else {
     Redirect::to("cart");
 }
+
+
+?>

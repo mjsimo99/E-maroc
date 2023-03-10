@@ -2,6 +2,17 @@
 
 class UsersController {
 
+
+
+	public function getAllclients()
+	{
+		$client = User::getAllclient();
+
+		return $client;
+	}
+
+
+
 	public function auth(){
 		if(isset($_POST['submit'])){
 			$data['email'] = $_POST['email'];

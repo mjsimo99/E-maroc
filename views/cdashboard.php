@@ -20,7 +20,10 @@ $products = $data->getAllcatégorie();
         <a href=" <?php echo BASE_URL; ?>cdashboard" class="btn btn-info btn-primary mr-2 mb-2">categorie</a>
     </div>
     <div class="card p-3 mx-2 text-center statistic mb-3">
-        <a href=" <?php echo BASE_URL; ?>odashboard" class="btn btn-dark btn-primary mr-2 mb-2">Client-Orders</a>
+        <a href=" <?php echo BASE_URL; ?>odashboard" class="btn btn-dark btn-primary mr-2 mb-2">Client</a>
+    </div>
+    <div class="card p-3 mx-2 text-center statistic mb-3">
+        <a href=" <?php echo BASE_URL; ?>oodashboard" class="btn btn-danger btn-primary mr-2 mb-2">Client-Orders</a>
     </div>
 </div>
 
